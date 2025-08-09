@@ -6,29 +6,30 @@ using System.Runtime.Versioning;
 
 [assembly: SupportedOSPlatform("windows")]
 
-namespace EcoNova_Mod;
+namespace EcoNova_Mod.Recipes;
 
 
-public class CustomDirtRampRecipe : RecipeFamily
+public class DirtRampRecipe : RecipeFamily
 {
-    public CustomDirtRampRecipe()
+    public DirtRampRecipe()
     {
         this.Recipes = new List<Recipe>
         {
             new Recipe(
-                "Dirt Ramp",
-                Localizer.DoStr("Dirt Ramp"),
+                "Rampe en terre",
+                Localizer.DoStr("Rampe en terre"),
                 new IngredientElement[]
                 {
-                    new IngredientElement("DirtItem", 2),         // Terre x2
+                    new IngredientElement(typeof(DirtItem), 2),         // Terre x2
                 },
                 new CraftingElement<DirtRampItem>()               // Produit 1 rampe
             )
         };
 
-        this.LaborInCalories = CreateLaborInCaloriesValue(10, null);
-        this.CraftMinutes = CreateCraftTimeValue(typeof(CustomDirtRampRecipe), 0.5f, null);
-        this.Initialize(Localizer.DoStr("Dirt Ramp"), typeof(CustomDirtRampRecipe));
+        this.ExperienceOnCraft = 1;
+        this.LaborInCalories = CreateLaborInCaloriesValue(20);
+        this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), 0.5f, null);
+        this.Initialize(Localizer.DoStr("Rampe en terre"), typeof(DirtRampRecipe));
         CraftingComponent.AddRecipe(typeof(WorkbenchObject), this); // Craft dans la Workbench
     }
 }

@@ -3,7 +3,7 @@ using Eco.Gameplay.Items.Recipes;
 using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
 
-namespace EcoNova_Mod;
+namespace EcoNova_Mod.Recipes;
 
 public class DeconstructionDirtRampRecipe : RecipeFamily
 {
@@ -12,18 +12,20 @@ public class DeconstructionDirtRampRecipe : RecipeFamily
         this.Recipes = new List<Recipe>
         {
             new Recipe(
-                "Deconstruction Dirt Ramp",
-                Localizer.DoStr("Deconstruction Dirt Ramp"),
+                "Déconstruction de rampe en terre",
+                Localizer.DoStr("Déconstruction de rampe en terre"),
                 new IngredientElement[]
                 {
-                    new IngredientElement("DirtRampItem", 1),         // Rampe en terre x1
+                    new IngredientElement(typeof(DirtRampItem), 1),         // Rampe en terre x1
                 },
-                    new CraftingElement<DirtRampItem>()               // Produit 1 rampe
+                    new CraftingElement<DirtItem>(2)               // Produit 2 terre
                 )
         };
-        this.LaborInCalories = CreateLaborInCaloriesValue(10, null);
+        
+        this.ExperienceOnCraft = 1;
+        this.LaborInCalories = CreateLaborInCaloriesValue(20);
         this.CraftMinutes = CreateCraftTimeValue(typeof(DeconstructionDirtRampRecipe), 0.5f, null);
-        this.Initialize(Localizer.DoStr("Deconstruction Dirt Ramp"), typeof(DeconstructionDirtRampRecipe));
+        this.Initialize(Localizer.DoStr("Déconstruction de rampe en terre"), typeof(DeconstructionDirtRampRecipe));
         CraftingComponent.AddRecipe(typeof(WorkbenchObject), this); // Craft dans la Workbench
     }
 }
