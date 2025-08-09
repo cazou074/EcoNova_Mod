@@ -2,9 +2,11 @@ using Eco.Gameplay.Components;
 using Eco.Gameplay.Items.Recipes;
 using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
+using Eco.Gameplay.Skills;
 
 namespace EcoNova_Mod.Recipes;
 
+[RequiresSkill(typeof(MiningSkill), 1)]  // nécessite le métier de minage niveau 1
 public class DirtClayRecipe : RecipeFamily
 {
     public DirtClayRecipe()
@@ -23,9 +25,9 @@ public class DirtClayRecipe : RecipeFamily
         };
         
         this.ExperienceOnCraft = 1;       
-        this.LaborInCalories = CreateLaborInCaloriesValue(20);
-        this.CraftMinutes = CreateCraftTimeValue(typeof(DirtClayRecipe), 0.2f, null);
+        this.LaborInCalories = CreateLaborInCaloriesValue(50, typeof(MiningSkill));
+        this.CraftMinutes = CreateCraftTimeValue(typeof(DirtClayRecipe), 0.5f, typeof(MiningSkill));
         this.Initialize(Localizer.DoStr("Argile de terre"), typeof(DirtClayRecipe));
-        CraftingComponent.AddRecipe(typeof(WorkbenchObject), this); // Craft dans la Workbench
+        CraftingComponent.AddRecipe(typeof(RockerBoxObject), this); // Craft dans la rampe de lavage
     }
 }

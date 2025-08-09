@@ -27,8 +27,8 @@ public class DirtRampRecipe : RecipeFamily
         };
 
         this.ExperienceOnCraft = 1;
-        this.LaborInCalories = CreateLaborInCaloriesValue(20);
-        this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), 0.5f, null);
+        this.LaborInCalories = CreateLaborInCaloriesValue(20); // 20 calories
+        this.CraftMinutes = CreateCraftTimeValue(typeof(DirtRampRecipe), 0.5f, null); // 30 secondes
         this.Initialize(Localizer.DoStr("Rampe en terre"), typeof(DirtRampRecipe));
         CraftingComponent.AddRecipe(typeof(WorkbenchObject), this); // Craft dans la Workbench
     }
