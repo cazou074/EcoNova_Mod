@@ -18,7 +18,7 @@ public class DirtClayRecipe : RecipeFamily
                     Localizer.DoStr("Argile de terre"),
                     new IngredientElement[]
                     {
-                        new IngredientElement(typeof(DirtItem), 5),         // Terre x1
+                        new IngredientElement(typeof(DirtItem), 5),         // Terre x5
                     },
                     new CraftingElement<ClayItem>()               // Produit 1 argile
                 ),
@@ -30,4 +30,5 @@ public class DirtClayRecipe : RecipeFamily
         this.Initialize(Localizer.DoStr("Argile de terre"), typeof(DirtClayRecipe));
         CraftingComponent.AddRecipe(typeof(RockerBoxObject), this); // Craft dans la rampe de lavage
     }
+
 }
